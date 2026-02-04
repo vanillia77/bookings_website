@@ -1,0 +1,9 @@
+<h3>➕ Ajouter Réservation</h3>
+
+<div style="display:grid; gap:10px; max-width:420px;">
+  <input [(ngModel)]="title" placeholder="Title" />
+  <textarea [(ngModel)]="description" placeholder="Description"></textarea>
+  <input [(ngModel)]="date" type="date" />
+  <input [(ngModel)]="time" type="time" />
+  <button (click)="addBooking()">Add booking</button>
+</div>

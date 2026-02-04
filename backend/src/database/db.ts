@@ -17,10 +17,11 @@ function initDb() {
         // Users Table
         db.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
+            fullName TEXT,
             email TEXT UNIQUE,
-            password TEXT,
-            role TEXT DEFAULT 'user'
+            passwordHash TEXT,
+            role TEXT DEFAULT 'User',
+            createdAt TEXT DEFAULT (datetime('now'))
         )`);
 
         // Bookings Table

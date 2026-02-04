@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -31,3 +31,4 @@ export class AuthGuard implements CanActivate {
     return this.router.parseUrl('/login');
   }
 }
+

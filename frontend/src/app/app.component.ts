@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'frontend';
   isDarkTheme = false;
+  refreshKey = 0;
 
   constructor() {
     // Load saved theme
@@ -28,4 +29,9 @@ export class AppComponent {
       localStorage.setItem('theme', 'light');
     }
   }
+
+  loadList() {
+    this.refreshKey++;
+  }
 }
+

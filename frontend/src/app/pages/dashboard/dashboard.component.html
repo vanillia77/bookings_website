@@ -1,0 +1,100 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Dashboard Overview</h1>
+
+    <!-- Filters -->
+    <div class="filters-container">
+      <div class="filter-group">
+        <label>Start Date</label>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="filter-group">
+        <label>End Date</label>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="filter-group">
+        <label>Status</label>
+        <select [(ngModel)]="status">
+          <option value="all">All Statuses</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="pending">Pending</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <button (click)="applyFilters()">
+        <span class="material-icons">filter_list</span>
+        Apply Filters
+      </button>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card total">
+      <div class="kpi-icon">
+        <span class="material-icons">analytics</span>
+      </div>
+      <div class="kpi-content">
+        <h3>Total Reservations</h3>
+        <p class="kpi-value">{{ totalReservations }}</p>
+      </div>
+    </div>
+    <div class="kpi-card pending">
+      <div class="kpi-icon">
+        <span class="material-icons">hourglass_empty</span>
+      </div>
+      <div class="kpi-content">
+        <h3>Pending</h3>
+        <p class="kpi-value">{{ pendingCount }}</p>
+      </div>
+    </div>
+    <div class="kpi-card confirmed">
+      <div class="kpi-icon">
+        <span class="material-icons">check_circle</span>
+      </div>
+      <div class="kpi-content">
+        <h3>Confirmed</h3>
+        <p class="kpi-value">{{ confirmedCount }}</p>
+      </div>
+    </div>
+    <div class="kpi-card cancelled">
+      <div class="kpi-icon">
+        <span class="material-icons">cancel</span>
+      </div>
+      <div class="kpi-content">
+        <h3>Cancelled</h3>
+        <p class="kpi-value">{{ cancelledCount }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-calendar-grid">
+    <!-- Chart Section -->
+    <div class="chart-container">
+      <div class="card-header">
+        <span class="material-icons">bar_chart</span>
+        <h2>Reservations by Status</h2>
+      </div>
+      <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType"
+        [legend]="barChartLegend">
+      </canvas>
+    </div>
+
+    <!-- Calendar Section -->
+    <div class="calendar-container">
+      <div class="card-header">
+        <span class="material-icons">event</span>
+        <h2>Booking Calendar</h2>
+      </div>
+      <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+  </div>
+</div>

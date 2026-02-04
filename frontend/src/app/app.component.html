@@ -5,16 +5,13 @@
     background-color: var(--bg-color);
   }
 
-  /* Sidebar */
   .sidebar {
     width: 260px;
     background-color: var(--card-bg);
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    transition: width 0.3s ease;
     z-index: 100;
-    box-shadow: 2px 0 10px var(--shadow-color);
   }
 
   .sidebar-header {
@@ -23,20 +20,6 @@
     align-items: center;
     padding: 0 25px;
     border-bottom: 1px solid var(--border-color);
-    color: var(--text-secondary);
-  }
-
-  .logo-icon {
-    font-size: 28px;
-    margin-right: 12px;
-    color: var(--accent-color);
-  }
-
-  .sidebar-header h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
   }
 
   .sidebar-nav {
@@ -44,102 +27,47 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-  }
-
-  .sidebar-nav a {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    color: var(--accent-color);
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .sidebar-nav a:hover {
-    background-color: var(--border-color);
-    color: var(--text-primary);
-  }
-
-  .sidebar-nav a.active {
-    background-color: rgba(141, 110, 99, 0.1);
-    color: var(--accent-hover);
-    font-weight: 600;
-  }
-
-  .sidebar-nav a .material-icons {
-    margin-right: 12px;
-    font-size: 20px;
-  }
-
-  .sidebar-footer {
-    padding: 20px 25px;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
     gap: 10px;
   }
 
-  .sidebar-btn {
-    display: flex;
-    align-items: center;
-    color: var(--text-secondary);
+  .sidebar-nav a {
     text-decoration: none;
+    color: #333;
     font-weight: 500;
-    font-size: 0.95rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    transition: color 0.2s ease;
   }
 
-  .sidebar-btn:hover {
-    color: var(--accent-color);
+  .sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
   }
 
-  .sidebar-btn .material-icons {
-    margin-right: 12px;
-    font-size: 20px;
+  .main-content {
+    flex: 1;
+    padding: 20px;
   }
 </style>
+
 <div class="app-layout">
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-header">
-      <span class="material-icons logo-icon">spa</span>
       <h2>Serenity</h2>
     </div>
+
     <nav class="sidebar-nav">
-      <a routerLink="/dashboard" routerLinkActive="active">
-        <span class="material-icons">grid_view</span> Dashboard
-      </a>
-      <a routerLink="/bookings" routerLinkActive="active">
-        <span class="material-icons">calendar_today</span> Bookings
-      </a>
-      <a routerLink="/users" routerLinkActive="active">
-        <span class="material-icons">people</span> Users
-      </a>
-      <a routerLink="/settings" routerLinkActive="active">
-        <span class="material-icons">settings</span> Settings
-      </a>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/form">Ajouter réservation</a>
+      <a routerLink="/list">Liste des réservations</a>
     </nav>
+
     <div class="sidebar-footer">
-      <!-- Theme Toggle -->
-      <button class="sidebar-btn" (click)="toggleTheme()">
-        <span class="material-icons">{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</span>
+      <button (click)="toggleTheme()">
         {{ isDarkTheme ? 'Light Mode' : 'Dark Mode' }}
       </button>
-
-      <a href="#" class="sidebar-btn">
-        <span class="material-icons">logout</span> Logout
-      </a>
     </div>
   </aside>
 
-  <!-- Main Content -->
+  <!-- Main -->
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>

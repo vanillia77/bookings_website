@@ -2,15 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'frontend';
+
+  // Theme
   isDarkTheme = false;
 
+  // Pour rafraîchir une liste si besoin
+  refreshKey = 0;
+
   constructor() {
-    // Load saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       this.isDarkTheme = true;
@@ -20,6 +23,7 @@ export class AppComponent {
 
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
+
     if (this.isDarkTheme) {
       document.body.classList.add('dark-theme');
       localStorage.setItem('theme', 'dark');
@@ -27,5 +31,9 @@ export class AppComponent {
       document.body.classList.remove('dark-theme');
       localStorage.setItem('theme', 'light');
     }
+  }
+
+  loadList() {
+    this.refreshKey++;
   }
 }

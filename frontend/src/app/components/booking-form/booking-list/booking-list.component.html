@@ -1,0 +1,45 @@
+<h3>📋 Réservations</h3>
+
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th *ngIf="isAdmin()">USER</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let b of bookings">
+      <td>{{ b.id }}</td>
+
+      <td *ngIf="isAdmin()">
+        {{ b.user_name || b.user_id }} <br />
+        <small>{{ b.user_email }}</small>
+      </td>
+
+      <td>{{ b.title }}</td>
+      <td>{{ b.description }}</td>
+      <td>{{ b.date }}</td>
+      <td>{{ b.time }}</td>
+
+      <td>
+        <span [ngStyle]="badgeStyle(b.status)">{{ b.status }}</span>
+      </td>
+
+      <td style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button routerLink="/edit/{{b.id}}">Edit</button>
+        <button (click)="delete(b.id)">Delete</button>
+
+        <button *ngIf="isAdmin() && b.status === 'pending'" (click)="confirmBooking(b)">
+          Confirm
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -6,18 +6,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
-
-  // Theme
   isDarkTheme = false;
-
-  // Pour rafraîchir une liste si besoin
   refreshKey = 0;
 
   constructor() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      this.isDarkTheme = true;
+    this.isDarkTheme = savedTheme === 'dark';
+
+    if (this.isDarkTheme) {
       document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
     }
   }
 

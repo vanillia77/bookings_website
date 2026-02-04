@@ -13,8 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { PagesModule } from './pages/pages.module';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BookingFormComponent } from './components/booking-form/booking-form.component';
 import { BookingListComponent } from './components/booking-form/booking-list/booking-list.component';
 import { BookingEditComponent } from './components/booking-edit/booking-edit.component';
@@ -22,6 +21,7 @@ import { BookingEditComponent } from './components/booking-edit/booking-edit.com
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     BookingFormComponent,
     BookingListComponent,
     BookingEditComponent
@@ -37,7 +37,6 @@ import { BookingEditComponent } from './components/booking-edit/booking-edit.com
     MatInputModule,
     MatFormFieldModule,
 
-    PagesModule,
     AppRoutingModule
   ],
   providers: [],

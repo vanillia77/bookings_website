@@ -1,17 +1,18 @@
+<h1 style="color: green">APP COMPONENT OK</h1>
+
 <style>
   .app-layout {
     display: flex;
     height: 100vh;
-    background-color: var(--bg-color);
+    background-color: #f5f5f5;
   }
 
   .sidebar {
     width: 260px;
-    background-color: var(--card-bg);
-    border-right: 1px solid var(--border-color);
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    z-index: 100;
   }
 
   .sidebar-header {
@@ -19,7 +20,7 @@
     display: flex;
     align-items: center;
     padding: 0 25px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #ddd;
   }
 
   .sidebar-nav {
@@ -38,7 +39,7 @@
 
   .sidebar-footer {
     padding: 20px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid #ddd;
   }
 
   .main-content {
@@ -48,7 +49,6 @@
 </style>
 
 <div class="app-layout">
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-header">
       <h2>Serenity</h2>
@@ -61,13 +61,10 @@
     </nav>
 
     <div class="sidebar-footer">
-      <button (click)="toggleTheme()">
-        {{ isDarkTheme ? 'Light Mode' : 'Dark Mode' }}
-      </button>
+      <button (click)="toggleTheme()">Changer thème</button>
     </div>
   </aside>
 
-  <!-- Main -->
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>

@@ -1,0 +1,54 @@
+
+Error: src/app/app.module.ts:25:5 - error NG6002: This import contains errors, which may affect components that depend on this NgModule.
+
+25     PagesModule,
+       ~~~~~~~~~~~
+
+
+Error: src/app/app.module.ts:26:5 - error NG6002: This import contains errors, which may affect components that depend on this NgModule.
+
+26     ComponentsModule
+       ~~~~~~~~~~~~~~~~
+
+
+Error: src/app/components/booking-form/booking-list/booking-list.component.ts:15:13 - error NG2003: No suitable injection token for parameter 'authService' of class 'BookingListComponent'.
+  Consider using the @Inject decorator to specify an injection token.
+
+15     private authService: any // Use any if AuthService type is not immediately available or just inject it
+               ~~~~~~~~~~~
+
+  src/app/components/booking-form/booking-list/booking-list.component.ts:15:26
+    15     private authService: any // Use any if AuthService type is not immediately available or just inject it
+                                ~~~
+    This type is not supported as injection token.
+
+
+Error: src/app/components/components.module.ts:13:9 - error NG6001: The class 'BookingListComponent' is listed in the declarations of the NgModule 'ComponentsModule', but is not a directive, a component, or a pipe. Either remove it from the NgModule's declarations, or add an appropriate Angular decorator.
+
+13         BookingListComponent,
+           ~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/booking-form/booking-list/booking-list.component.ts:8:14
+    8 export class BookingListComponent implements OnInit, OnChanges {
+                   ~~~~~~~~~~~~~~~~~~~~
+    'BookingListComponent' is declared here.
+
+
+Error: src/app/components/components.module.ts:23:9 - error NG6003: 'BookingListComponent' does not appear to be an NgModule, Component, Directive, or Pipe class.
+
+23         BookingListComponent,
+           ~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/booking-form/booking-list/booking-list.component.ts:8:14
+    8 export class BookingListComponent implements OnInit, OnChanges {
+                   ~~~~~~~~~~~~~~~~~~~~
+    Is it missing an Angular annotation?
+
+
+Error: src/app/pages/pages.module.ts:32:5 - error NG6002: This import contains errors, which may affect components that depend on this NgModule.
+
+32     ComponentsModule
+       ~~~~~~~~~~~~~~~~
+
+
+

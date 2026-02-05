@@ -1,1 +1,197 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* Base styles */
+
+/* Material Datepicker Nude Theme Overrides */
+.mat-calendar-body-selected {
+    background-color: #8d6e63 !important;
+    /* Circle color */
+    color: white !important;
+}
+
+.mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: #8d6e63 !important;
+    /* Today circle border */
+}
+
+.mat-date-range-input-separator {
+    color: #5d4037 !important;
+}
+
+/* Global Material Form Field Reset */
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.mat-form-field-underline {
+    display: none !important;
+}
+
+/* Variable Definitions */
+:root {
+    /* Light Theme (Nude) */
+    --bg-color: #faf9f6;
+    --card-bg: #ffffff;
+    --text-primary: #5d4037;
+    --text-secondary: #a1887f;
+    --accent-color: #8d6e63;
+    --accent-hover: #6d4c41;
+    --border-color: #efebe9;
+    --shadow-color: rgba(118, 88, 68, 0.08);
+}
+
+.dark-theme {
+    /* Creamy Warm Brown Dark Theme */
+    --bg-color: #4e342e;
+    --card-bg: #5d4037;
+    --text-primary: #fbe9e7;
+    --text-secondary: #d7ccc8;
+    --accent-color: #bcaaa4;
+    --accent-hover: #e0d4d0;
+    --border-color: #6d4c41;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .mat-form-field-wrapper {
+    background-color: transparent !important;
+    padding-bottom: 0 !important;
+}
+
+.dark-theme .mat-datepicker-content {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.dark-theme .mat-calendar-body-cell-content,
+.dark-theme .mat-calendar-period-button,
+.dark-theme .mat-calendar-table-header,
+.dark-theme .mat-calendar-table-header th,
+.dark-theme .mat-calendar-table-header abbr,
+.dark-theme .mat-calendar-body-label,
+.dark-theme .mat-calendar-body-weekday,
+.dark-theme .mat-calendar-next-button,
+.dark-theme .mat-calendar-previous-button,
+.dark-theme .mat-calendar-arrow {
+    color: var(--text-primary) !important;
+}
+
+.dark-theme .mat-calendar-table-header-divider::after {
+    background: var(--border-color) !important;
+}
+
+.dark-theme .mat-calendar-body-selected {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+}
+
+.dark-theme .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: var(--accent-color) !important;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    accent-color: var(--accent-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* UNIFIED FILTER STYLING (UNIVERSAL LIGHT & DARK) */
+/* This block forces the marron clair pill design on all filters */
+
+/* 1. Target the Select Dropdown */
+.filter-group select {
+    background-color: #d7ccc8 !important;
+    /* Marron Clair */
+    border-radius: 100px !important;
+    border: 1px solid #6d4c41 !important;
+    /* Dark brown border */
+    color: #3e2723 !important;
+    /* Dark brown text */
+    height: 52px !important;
+    padding: 0 24px !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233e2723'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 20px !important;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+/* 2. Target the Material Date Fields (MDC) */
+/* The wrapper/surface is what holds the background */
+.filters-container .mat-mdc-text-field-wrapper,
+.filters-container .mdc-text-field--outlined,
+.filters-container .mdc-text-field {
+    background-color: #d7ccc8 !important;
+    /* Marron Clair */
+    border-radius: 100px !important;
+    border: 1px solid #6d4c41 !important;
+    /* Dark brown border */
+    height: 52px !important;
+    padding: 0 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Hide all internal MDC layers that cause shadows, white boxes, or rectangles */
+.filters-container .mdc-notched-outline,
+.filters-container .mdc-notched-outline__leading,
+.filters-container .mdc-notched-outline__notch,
+.filters-container .mdc-notched-outline__trailing,
+.filters-container .mdc-text-field__ripple,
+.filters-container .mat-mdc-form-field-focus-overlay,
+.filters-container .mat-mdc-form-field-background,
+.filters-container .mat-form-field-outline {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* Force text and icon colors */
+.filters-container input.mat-mdc-input-element,
+.filters-container .mdc-text-field__input {
+    color: #3e2723 !important;
+    font-weight: 700 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    -webkit-text-fill-color: #3e2723 !important;
+    caret-color: #3e2723 !important;
+}
+
+.filters-container .mat-datepicker-toggle button,
+.filters-container .mat-datepicker-toggle .mat-mdc-button-touch-target {
+    color: #3e2723 !important;
+}
+
+/* Centering and spacing resets */
+.filters-container .mat-mdc-form-field-infix,
+.filters-container .mdc-text-field__infix {
+    padding: 0 !important;
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    border: none !important;
+}
+
+/* Clean up extra Material padding and subscripts */
+.filters-container .mat-mdc-form-field-subscript-wrapper,
+.filters-container .mat-mdc-form-field-bottom-align,
+.filters-container .mat-form-field-wrapper {
+    display: none !important;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

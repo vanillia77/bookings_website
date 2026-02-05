@@ -7,17 +7,19 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SettingsComponent } from './settings/settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
-
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,
@@ -27,10 +29,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule,
+    ComponentsModule
   ],
   exports: [
-    DashboardComponent
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
+    SettingsComponent
   ]
 })
 export class PagesModule { }

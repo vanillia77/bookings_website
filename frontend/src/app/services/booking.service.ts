@@ -4,19 +4,19 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
-  private api = 'http://localhost:3000/bookings';
+  private api = '/api/bookings';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(this.api);
   }
 
-  create(data: { title: string; description?: string; date: string; time: string }): Observable<any> {
+  create(data: { details: string; date: string; endDate?: string; time: string; phone?: string; persons?: number; title?: string; status?: string }): Observable<any> {
     return this.http.post(this.api, data);
   }
 
-  update(id: number, data: { title: string; description?: string; date: string; time: string }): Observable<any> {
+  update(id: number, data: { details?: string; date?: string; endDate?: string; time?: string; phone?: string; persons?: number; title?: string; status?: string }): Observable<any> {
     return this.http.put(`${this.api}/${id}`, data);
   }
 

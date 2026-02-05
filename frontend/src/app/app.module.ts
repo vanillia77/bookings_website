@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
-
-import { BookingFormComponent } from './components/booking-form/booking-form.component';
-import { BookingListComponent } from './components/booking-form/booking-list/booking-list.component';
-import { BookingEditComponent } from './components/booking-edit/booking-edit.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BookingFormComponent,
-    BookingListComponent,
-    BookingEditComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +21,9 @@ import { BookingEditComponent } from './components/booking-edit/booking-edit.com
     BrowserAnimationsModule,
     PagesModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

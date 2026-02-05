@@ -104,32 +104,40 @@
     margin-right: 12px;
     font-size: 20px;
   }
+
+  .no-sidebar .main-content {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logout-btn {
+    width: 100%;
+    margin-top: 10px;
+    color: #e57373;
+  }
+
+  .logout-btn:hover {
+    color: #f44336;
+  }
 </style>
-<div class="app-layout">
+<div class="app-layout" [class.no-sidebar]="!isLoggedIn()">
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <aside class="sidebar" *ngIf="isLoggedIn()">
     <div class="sidebar-header">
       <span class="material-icons logo-icon">spa</span>
       <h2>Serenity</h2>
     </div>
     <nav class="sidebar-nav">
       <a routerLink="/dashboard" routerLinkActive="active">
-        <span class="material-icons">grid_view</span> Dashboard
+        <span class="material-icons">grid_view</span> Tableau de bord
       </a>
       <a routerLink="/bookings" routerLinkActive="active">
-        <span class="material-icons">calendar_today</span> Bookings
-      </a>
-      <a routerLink="/form" routerLinkActive="active">
-        <span class="material-icons">add_circle_outline</span> Ajouter réservation
-      </a>
-      <a routerLink="/list" routerLinkActive="active">
-        <span class="material-icons">list_alt</span> Liste des réservations
-      </a>
-      <a routerLink="/users" routerLinkActive="active">
-        <span class="material-icons">people</span> Users
+        <span class="material-icons">calendar_today</span> Réservations
       </a>
       <a routerLink="/settings" routerLinkActive="active">
-        <span class="material-icons">settings</span> Settings
+        <span class="material-icons">settings</span> Paramètres
       </a>
     </nav>
     <div class="sidebar-footer">
@@ -139,9 +147,9 @@
         {{ isDarkTheme ? 'Light Mode' : 'Dark Mode' }}
       </button>
 
-      <a href="#" class="sidebar-btn">
+      <button class="sidebar-btn logout-btn" (click)="logout()">
         <span class="material-icons">logout</span> Logout
-      </a>
+      </button>
     </div>
   </aside>
 

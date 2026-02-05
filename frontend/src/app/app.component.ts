@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ export class AppComponent {
   isDarkTheme = false;
   refreshKey = 0;
 
-  constructor() {
+  constructor(private auth: AuthService, private router: Router) {
     // Load saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -32,6 +34,15 @@ export class AppComponent {
 
   loadList() {
     this.refreshKey++;
+  }
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }
 

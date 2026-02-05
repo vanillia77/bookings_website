@@ -6,8 +6,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { StatsService } from '../../services/stats.service';
 import { registerables } from 'chart.js';
 
-Chart.register(...registerables);
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -52,7 +50,12 @@ export class DashboardComponent implements OnInit {
   endDate: string | null = null;
   status: string = 'all';
 
-  constructor(private statsService: StatsService) { }
+  constructor(private statsService: StatsService) {
+    // Register Chart.js elements inside the component scope
+    if (Chart) {
+      Chart.register(...registerables);
+    }
+  }
 
   ngOnInit(): void {
     this.loadStats();
@@ -60,18 +63,37 @@ export class DashboardComponent implements OnInit {
   }
 
   applyFilters() {
+    console.log('[DEBUG] applyFilters clicked', { startDate: this.startDate, endDate: this.endDate, status: this.status });
+
     const filters: any = {};
-    if (this.startDate) filters.startDate = this.startDate;
-    if (this.endDate) filters.endDate = this.endDate;
+    if (this.startDate) {
+      filters.startDate = this.formatDate(this.startDate);
+    }
+    if (this.endDate) {
+      filters.endDate = this.formatDate(this.endDate);
+    }
     if (this.status && this.status !== 'all') filters.status = this.status;
+
+    console.log('[DEBUG] Final filters object', filters);
 
     this.loadStats(filters);
     this.loadCalendar(filters);
   }
 
+  private formatDate(date: any): string {
+    if (!date) return '';
+    const d = new Date(date);
+    const month = '' + (d.getMonth() + 1);
+    const day = '' + d.getDate();
+    const year = d.getFullYear();
+    return [year, month.padStart(2, '0'), day.padStart(2, '0')].join('-');
+  }
+
   loadStats(filters: any = {}) {
+    console.log('[DEBUG] loadStats called with filters:', filters);
     this.statsService.getSummary(filters).subscribe({
       next: (data) => {
+        console.log('[DEBUG] loadStats success:', data);
         this.totalReservations = data.totalReservations;
 
         // Calculate KPIs - Mapped to new variable names
@@ -79,35 +101,40 @@ export class DashboardComponent implements OnInit {
         this.confirmedCount = data.reservationsByStatus.find((s: any) => s.status === 'confirmed')?.count || 0;
         this.cancelledCount = data.reservationsByStatus.find((s: any) => s.status === 'cancelled')?.count || 0;
 
-        // Update Chart
-        const labels = data.reservationsByStatus.map((s: any) => s.status);
-        const counts = data.reservationsByStatus.map((s: any) => s.count);
+        // Update Chart - Fixed Order
+        const statusOrder = ['confirmed', 'pending', 'cancelled'];
+        const counts = statusOrder.map(status => {
+          const item = data.reservationsByStatus.find((s: any) => s.status === status);
+          return item ? item.count : 0;
+        });
 
         this.barChartData = {
-          labels: labels,
+          labels: ['Confirmé', 'En attente', 'Annulé'], // French labels
           datasets: [
             {
               data: counts,
-              label: 'Reservations by Status',
+              label: 'Réservations',
               backgroundColor: [
-                '#81c784', // Muted green for confirmed
-                '#ffd54f', // Muted yellow for pending
-                '#e57373'  // Muted red for cancelled
+                '#81c784', // Green for Confirmed
+                '#ffd54f', // Yellow for Pending
+                '#e57373'  // Red for Cancelled
               ]
             }
           ]
         };
       },
-      error: (err) => console.error('Failed to load stats', err)
+      error: (err) => console.error('[DEBUG] Failed to load stats', err)
     });
   }
 
   loadCalendar(filters: any = {}) {
+    console.log('[DEBUG] loadCalendar called with filters:', filters);
     this.statsService.getCalendarEvents(filters).subscribe({
       next: (events) => {
+        console.log('[DEBUG] loadCalendar success:', events.length, 'events');
         this.calendarOptions.events = events;
       },
-      error: (err) => console.error('Failed to load calendar events', err)
+      error: (err) => console.error('[DEBUG] Failed to load calendar events', err)
     });
   }
 }

@@ -1,11 +1,64 @@
-<h3>✏️ Edit Booking</h3>
+<div
+  style="max-width: 600px; margin: 40px auto; padding: 30px 40px; background: white; border-radius: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); border: 1px solid #eee;">
+  <h2 style="margin-bottom: 20px; color: #5d4037;">✏️ Modifier Réservation</h2>
 
-<div style="display:grid; gap:10px; max-width:420px;">
-  <input [(ngModel)]="title" placeholder="Title" />
-  <textarea [(ngModel)]="description" placeholder="Description"></textarea>
-  <input [(ngModel)]="date" type="date" />
-  <input [(ngModel)]="time" type="time" />
+  <div style="display: grid; gap: 15px;">
 
-  <button (click)="save()">Save</button>
-  <button routerLink="/">Cancel</button>
+    <div>
+      <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Nom / Détails</label>
+      <input [(ngModel)]="details"
+        style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa; box-sizing: border-box;" />
+    </div>
+
+    <div style="display: flex; gap: 15px;">
+      <div style="flex: 1;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Date Début</label>
+        <input [(ngModel)]="date" type="date"
+          style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa; width: 100%;" />
+      </div>
+      <div style="flex: 1;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Date Fin</label>
+        <input [(ngModel)]="endDate" type="date"
+          style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa; width: 100%;" />
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 15px;">
+      <div style="flex: 1;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Heure</label>
+        <input [(ngModel)]="time" type="time"
+          style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa; width: 100%;" />
+      </div>
+      <div style="flex: 1;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Personnes</label>
+        <input [(ngModel)]="persons" type="number" min="1"
+          style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa; width: 100%;" />
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 15px;">
+      <div style="flex: 1;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Téléphone</label>
+        <input [(ngModel)]="phone" type="tel"
+          style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa;" />
+      </div>
+      <div style="flex: 1;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #888; text-transform: uppercase;">Status</label>
+        <select [(ngModel)]="status"
+          style="width: 100%; padding: 12px; border-radius: 100px; border: 1px solid #ddd; background: #fafafa; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23888\'%3e%3cpath d=\'M7 10l5 5 5-5z\'/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 15px center; background-size: 18px;">
+          <option value="pending">En attente</option>
+          <option value="confirmed">Confirmé</option>
+          <option value="cancelled">Annulé</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <button routerLink="/bookings"
+        style="padding: 10px 20px; border: 1px solid #aaa; background: white; border-radius: 8px; cursor: pointer;">Annuler</button>
+      <button (click)="save()"
+        style="padding: 10px 25px; background: #8d6e63; color: white; border: none; border-radius: 8px; cursor: pointer;">Sauvegarder</button>
+    </div>
+
+  </div>
 </div>

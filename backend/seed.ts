@@ -1,29 +1,34 @@
 import db from './src/database/db';
+import bcrypt from 'bcryptjs';
 
-const seed = () => {
+const seed = async () => {
     console.log('Seeding database...');
 
-    // Create Users
-    db.run(`INSERT INTO users (name, email, password, role) VALUES ('Admin User', 'admin@example.com', 'hash123', 'admin')`, (err) => {
-        if (!err) {
-            // Create Bookings
-            const bookings = [
-                { userId: 1, date: '2023-10-25', status: 'confirmed', details: 'Meeting Room A' },
-                { userId: 1, date: '2023-10-26', status: 'pending', details: 'Conference Call' },
-                { userId: 1, date: '2023-10-27', status: 'cancelled', details: 'Lunch with Client' },
-                { userId: 1, date: '2023-10-28', status: 'confirmed', details: 'Project Review' }
-            ];
+    try {
+        const passwordHash = await bcrypt.hash('123456', 10);
 
-            bookings.forEach(b => {
-                db.run(`INSERT INTO bookings (userId, date, status, details) VALUES (?, ?, ?, ?)`,
-                    [b.userId, b.date, b.status, b.details]);
+        // Create Users
+        db.run(`INSERT INTO users (fullName, email, passwordHash, role) VALUES (?, ?, ?, ?)`,
+            ['Safaa', 'safaa@test.com', passwordHash, 'User'], (err) => {
+                if (!err) {
+                    // Create Bookings
+                    const bookings = [
+                        { userId: 1, date: '2023-10-25', status: 'confirmed', details: 'Meeting Room A' },
+                        { userId: 1, date: '2023-10-26', status: 'pending', details: 'Conference Call' },
+                    ];
+
+                    bookings.forEach(b => {
+                        db.run(`INSERT INTO bookings (userId, date, status, details) VALUES (?, ?, ?, ?)`,
+                            [b.userId, b.date, b.status, b.details]);
+                    });
+                    console.log('Seeding complete.');
+                } else {
+                    console.log('Database likely already seeded or error:', err.message);
+                }
             });
-            console.log('Seeding complete.');
-        } else {
-            // check if unique constraint failed (already seeded)
-            console.log('Database likely already seeded or error:', err.message);
-        }
-    });
+    } catch (err) {
+        console.error('Error during seeding:', err);
+    }
 };
 
 setTimeout(seed, 1000); // Wait for DB init

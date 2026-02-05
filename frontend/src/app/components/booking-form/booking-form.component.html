@@ -1,9 +1,78 @@
-<h3>➕ Ajouter Réservation</h3>
+<div
+  style="background: var(--card-bg); padding: 30px 40px; border-radius: 24px; box-shadow: 0 8px 30px var(--shadow-color); border: 1px solid var(--border-color); margin-bottom: 30px;">
 
-<div style="display:grid; gap:10px; max-width:420px;">
-  <input [(ngModel)]="title" placeholder="Title" />
-  <textarea [(ngModel)]="description" placeholder="Description"></textarea>
-  <input [(ngModel)]="date" type="date" />
-  <input [(ngModel)]="time" type="time" />
-  <button (click)="addBooking()">Add booking</button>
+  <div style="display: flex; align-items: center; margin-bottom: 25px;">
+    <span class="material-icons"
+      style="color: var(--accent-color); margin-right: 12px; font-size: 28px;">add_circle</span>
+    <h2 style="margin: 0; color: var(--text-primary); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px;">
+      Nouvelle Réservation</h2>
+  </div>
+
+  <!-- Responsive Flex Container for Inputs -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;">
+
+    <!-- Row 1: Main details -->
+    <div style="flex: 2; min-width: 250px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Détails
+        / Nom</label>
+      <input [(ngModel)]="details" placeholder="Nom de la réservation"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 24px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none;" />
+    </div>
+
+    <div style="flex: 1; min-width: 140px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Date
+        Début</label>
+      <input [(ngModel)]="date" type="date"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 15px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none;" />
+    </div>
+
+    <div style="flex: 1; min-width: 140px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Date
+        Fin</label>
+      <input [(ngModel)]="endDate" type="date"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 15px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none;" />
+    </div>
+
+    <!-- Row 2: Secondary details -->
+    <div style="flex: 0.8; min-width: 110px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Heure</label>
+      <input [(ngModel)]="time" type="time"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 15px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none;" />
+    </div>
+
+    <div style="flex: 0.6; min-width: 80px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Pers.</label>
+      <input [(ngModel)]="persons" type="number" min="1"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 15px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none;" />
+    </div>
+
+    <div style="flex: 1.2; min-width: 160px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Téléphone</label>
+      <input [(ngModel)]="phone" placeholder="Optionnel"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 20px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none;" />
+    </div>
+
+    <div style="flex: 1.2; min-width: 160px; display: flex; flex-direction: column; gap: 8px;">
+      <label
+        style="font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-left: 10px;">Status</label>
+      <select [(ngModel)]="status"
+        style="background-color: #d7ccc8; border-radius: 100px; border: 1px solid #6d4c41; color: #3e2723; height: 50px; padding: 0 20px; font-weight: 700; font-size: 0.9rem; width: 100%; box-sizing: border-box; outline: none; appearance: none; background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%233e2723\'%3e%3cpath d=\'M7 10l5 5 5-5z\'/%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 15px center; background-size: 20px;">
+        <option value="pending">En attente</option>
+        <option value="confirmed">Confirmé</option>
+        <option value="cancelled">Annulé</option>
+      </select>
+    </div>
+
+    <button (click)="addBooking()"
+      style="padding: 0 40px; background-color: var(--accent-color); color: white; border: none; border-radius: 80px; cursor: pointer; font-size: 1rem; font-weight: 700; height: 50px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease; box-shadow: 0 6px 15px rgba(188, 170, 164, 0.3);">
+      <span class="material-icons">add</span>
+      Ajouter
+    </button>
+  </div>
 </div>

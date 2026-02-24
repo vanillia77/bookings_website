@@ -4,7 +4,8 @@ import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-booking-edit',
-  templateUrl: './booking-edit.component.html'
+  templateUrl: './booking-edit.component.html',
+  styleUrls: ['./booking-edit.component.css']
 })
 export class BookingEditComponent implements OnInit {
   id!: number;

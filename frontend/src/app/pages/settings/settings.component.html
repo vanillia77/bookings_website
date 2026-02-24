@@ -1,54 +1,37 @@
-<div style="padding: 24px; max-width: 650px; margin: 0 auto;">
+<div class="settings-container">
 
-    <div style="display: flex; align-items: center; margin-bottom: 30px; gap: 15px;">
-        <span class="material-icons" style="color: var(--accent-color); font-size: 32px;">settings</span>
-        <h2 style="margin: 0; color: var(--text-primary); font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px;">
-            Paramètres</h2>
+    <div class="settings-header">
+        <span class="material-icons settings-icon">settings</span>
+        <h2 class="settings-title">Paramètres</h2>
     </div>
 
-    <div
-        style="background: var(--card-bg); padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px var(--shadow-color); border: 1px solid var(--border-color);">
+    <div class="settings-card">
 
-        <div style="margin-bottom: 25px;">
-            <label
-                style="display: block; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px;">Nom
-                complet</label>
-            <input [(ngModel)]="fullName" type="text"
-                style="width: 100%; padding: 15px 25px; background-color: #d7ccc8; border: 1px solid #6d4c41; border-radius: 100px; color: #3e2723; font-weight: 700; font-size: 1rem; box-sizing: border-box; outline: none;"
-                placeholder="Votre nom" />
+        <div class="form-field">
+            <label class="form-label">Nom complet</label>
+            <input [(ngModel)]="fullName" type="text" class="form-input" placeholder="Votre nom" />
         </div>
 
-        <div style="margin-bottom: 25px;">
-            <label
-                style="display: block; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px;">Email
-                (Lecture seule)</label>
-            <input [(ngModel)]="email" type="email" disabled
-                style="width: 100%; padding: 15px 25px; background-color: #efebe9; border: 1px solid #d7ccc8; border-radius: 100px; color: #a1887f; font-weight: 600; font-size: 1rem; box-sizing: border-box; cursor: not-allowed;" />
+        <div class="form-field">
+            <label class="form-label">Email (Lecture seule)</label>
+            <input [(ngModel)]="email" type="email" disabled class="form-input" />
         </div>
 
-        <div style="margin-bottom: 35px;">
-            <label
-                style="display: block; margin-bottom: 10px; color: var(--text-secondary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px;">Changer
-                le mot de passe</label>
-            <input [(ngModel)]="password" type="password"
-                style="width: 100%; padding: 15px 25px; background-color: #d7ccc8; border: 1px solid #6d4c41; border-radius: 100px; color: #3e2723; font-weight: 700; font-size: 1rem; box-sizing: border-box; outline: none;"
-                placeholder="••••••••" />
-            <p style="margin: 8px 0 0 15px; color: var(--text-secondary); font-size: 0.7rem;">Laissez vide pour
-                conserver le mot de passe actuel.</p>
+        <div class="form-field">
+            <label class="form-label">Changer le mot de passe</label>
+            <input [(ngModel)]="password" type="password" class="form-input" placeholder="••••••••" />
+            <p class="helper-text">Laissez vide pour conserver le mot de passe actuel.</p>
         </div>
 
-        <button (click)="updateProfile()"
-            style="width: 100%; padding: 16px; background: var(--accent-color); color: white; border: none; border-radius: 100px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(141, 110, 99, 0.3);">
+        <button (click)="updateProfile()" class="btn-submit">
             Enregistrer les modifications
         </button>
 
-        <div *ngIf="message"
-            style="margin-top: 25px; padding: 15px; background: #c8e6c9; color: #2e7d32; border-radius: 12px; text-align: center; font-weight: 600; font-size: 0.9rem;">
+        <div *ngIf="message" class="status-message message-success">
             ✅ {{ message }}
         </div>
 
-        <div *ngIf="error"
-            style="margin-top: 25px; padding: 15px; background: #ffcdd2; color: #c62828; border-radius: 12px; text-align: center; font-weight: 600; font-size: 0.9rem;">
+        <div *ngIf="error" class="status-message message-error">
             ❌ {{ error }}
         </div>
 

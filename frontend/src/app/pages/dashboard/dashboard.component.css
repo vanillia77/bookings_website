@@ -42,6 +42,11 @@ h1::after {
     border-radius: 2px;
 }
 
+.actions-section {
+    margin-bottom: 3rem;
+    animation: fadeInSlide 0.6s ease-out;
+}
+
 /* --- Filters --- */
 .filters-container {
     display: flex;
@@ -56,6 +61,8 @@ h1::after {
     flex-wrap: wrap;
     justify-content: center;
     transition: all 0.3s ease;
+    margin-bottom: 3rem;
+    animation: fadeInSlide 0.7s ease-out;
 }
 
 .filter-group {
@@ -134,9 +141,26 @@ h1::after {
     display: flex;
     align-items: center;
     gap: 20px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
     overflow: hidden;
+    animation: fadeInSlide 0.8s ease-out backwards;
+}
+
+.kpi-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.kpi-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.kpi-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.kpi-card:nth-child(4) {
+    animation-delay: 0.4s;
 }
 
 .kpi-card:hover {
@@ -355,4 +379,22 @@ h1::after {
     border-radius: 12px !important;
     overflow: hidden !important;
     border-color: var(--border-color) !important;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chart-container,
+.calendar-container {
+    animation: fadeInSlide 1s ease-out backwards;
+    animation-delay: 0.5s;
 }

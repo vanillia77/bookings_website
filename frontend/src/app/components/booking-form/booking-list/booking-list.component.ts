@@ -3,7 +3,8 @@ import { BookingService } from '../../../services/booking.service';
 
 @Component({
   selector: 'app-booking-list',
-  templateUrl: './booking-list.component.html'
+  templateUrl: './booking-list.component.html',
+  styleUrls: ['./booking-list.component.css']
 })
 export class BookingListComponent implements OnInit, OnChanges {
   @Input() refreshKey = 0;
@@ -56,31 +57,10 @@ export class BookingListComponent implements OnInit, OnChanges {
   }
 
   badgeStyle(status: string) {
-    let bg = '#eee';
-    let color = '#444';
-
-    if (status === 'confirmed') {
-      bg = '#e8f5e9'; // Light Green
-      color = '#2e7d32'; // Dark Green
-    } else if (status === 'pending') {
-      bg = '#fff8e1'; // Light Amber
-      color = '#f57c00'; // Dark Orange
-    } else if (status === 'cancelled') {
-      bg = '#ffebee'; // Light Red
-      color = '#c62828'; // Dark Red
-    }
-
-    return {
-      padding: '6px 14px',
-      borderRadius: '20px',
-      display: 'inline-block',
-      color: color,
-      background: bg,
-      fontSize: '11px',
-      fontWeight: '700',
-      textTransform: 'uppercase',
-      letterSpacing: '0.5px'
-    };
+    if (status === 'confirmed') return { background: '#e8f5e9', color: '#2e7d32' };
+    if (status === 'pending') return { background: '#fff8e1', color: '#f57c00' };
+    if (status === 'cancelled') return { background: '#ffebee', color: '#c62828' };
+    return { background: '#eee', color: '#444' };
   }
 
   formatTime(b: any) {

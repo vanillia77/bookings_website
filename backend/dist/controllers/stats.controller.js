@@ -9,14 +9,13 @@ const getGeneralStats = (req, res) => {
     const { startDate, endDate, status } = req.query;
     let whereClauses = [];
     let params = [];
-    // Filter by Date Range (using overlap logic if endDate exists in bookings, or simple comparison)
-    // For Dashboard Stats, we usually want bookings that are "active" during this range
+
     if (startDate) {
         whereClauses.push(`(date >= ? OR endDate >= ?)`);
         params.push(startDate, startDate);
     }
     if (endDate) {
-        // Ensure inclusive end date matching by adding the end of the day
+
         const endOfDay = `${endDate}T23:59:59`;
         whereClauses.push(`date <= ?`);
         params.push(endOfDay);
@@ -32,11 +31,7 @@ const getGeneralStats = (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         const total = row ? row.total : 0;
-        // Breakdown by status for the CURRENT selection
-        // However, if we filter by Confirmed, the chart only shows Confirmed. 
-        // If the user wants to see the OVERALL distribution while the KPI is filtered, 
-        // they should remove the status filter. 
-        // We stay consistent with the query above.
+
         const sqlByStatus = `SELECT status, COUNT(*) as count FROM bookings ${whereSql} GROUP BY status`;
         db_1.default.all(sqlByStatus, params, (err, rows) => {
             if (err) {

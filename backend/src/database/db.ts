@@ -15,7 +15,6 @@ const db: Database = new sqlite3.Database(dbPath, (err) => {
 
 function initDb() {
     db.serialize(() => {
-        // Users Table
         db.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             fullName TEXT,
@@ -25,7 +24,6 @@ function initDb() {
             createdAt TEXT DEFAULT (datetime('now'))
         )`);
 
-        // Bookings Table
         db.run(`CREATE TABLE IF NOT EXISTS bookings (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             userId INTEGER,
@@ -39,7 +37,6 @@ function initDb() {
             FOREIGN KEY(userId) REFERENCES users(id)
         )`);
 
-        // Migrations: Try to add columns if they don't exist (for existing DBs)
         const migrations = [
             "ALTER TABLE bookings ADD COLUMN endDate TEXT",
             "ALTER TABLE bookings ADD COLUMN phone TEXT",
@@ -49,7 +46,6 @@ function initDb() {
 
         migrations.forEach(query => {
             db.run(query, (err) => {
-                // Ignore error if column already exists
             });
         });
     });

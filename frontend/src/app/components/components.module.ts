@@ -16,7 +16,7 @@ import { BookingEditComponent } from './booking-edit/booking-edit.component';
     imports: [
         CommonModule,
         FormsModule,
-        RouterModule // Needed for routerLink in EditComponent
+        RouterModule
     ],
     exports: [
         BookingFormComponent,

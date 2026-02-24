@@ -7,14 +7,11 @@ export const getGeneralStats = (req: Request, res: Response) => {
     let whereClauses: string[] = [];
     let params: any[] = [];
 
-    // Filter by Date Range (using overlap logic if endDate exists in bookings, or simple comparison)
-    // For Dashboard Stats, we usually want bookings that are "active" during this range
     if (startDate) {
         whereClauses.push(`(date >= ? OR endDate >= ?)`);
         params.push(startDate, startDate);
     }
     if (endDate) {
-        // Ensure inclusive end date matching by adding the end of the day
         const endOfDay = `${endDate}T23:59:59`;
         whereClauses.push(`date <= ?`);
         params.push(endOfDay);
@@ -34,7 +31,6 @@ export const getGeneralStats = (req: Request, res: Response) => {
         }
         const filteredTotal = row ? row.total : 0;
 
-        // NEW: Get absolute total (unfiltered)
         db.get('SELECT COUNT(*) as absoluteTotal FROM bookings', [], (err, absRow: any) => {
             if (err) return res.status(500).json({ error: err.message });
             const absoluteTotal = absRow ? absRow.absoluteTotal : 0;
@@ -46,8 +42,8 @@ export const getGeneralStats = (req: Request, res: Response) => {
                     return res.status(500).json({ error: err.message });
                 }
                 res.json({
-                    totalReservations: absoluteTotal, // Now returns the absolute total
-                    filteredTotal: filteredTotal,     // Keep filtered total just in case
+                    totalReservations: absoluteTotal,
+                    filteredTotal: filteredTotal,
                     reservationsByStatus: rows
                 });
             });
@@ -86,7 +82,7 @@ export const getCalendarEvents = (req: Request, res: Response) => {
             id: booking.id,
             title: `${booking.details} (${booking.status})`,
             start: booking.date,
-            end: booking.endDate || booking.date, // Include end date for fullcalendar
+            end: booking.endDate || booking.date,
             backgroundColor: getColorForStatus(booking.status)
         }));
 
@@ -96,9 +92,9 @@ export const getCalendarEvents = (req: Request, res: Response) => {
 
 const getColorForStatus = (status: string) => {
     switch (status) {
-        case 'confirmed': return '#28a745'; // Green
-        case 'pending': return '#ffc107'; // Yellow
-        case 'cancelled': return '#dc3545'; // Red
-        default: return '#007bff'; // Blue
+        case 'confirmed': return '#28a745';
+        case 'pending': return '#ffc107';
+        case 'cancelled': return '#dc3545';
+        default: return '#007bff';
     }
 };

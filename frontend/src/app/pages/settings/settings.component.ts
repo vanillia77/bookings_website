@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit {
             next: (res: any) => {
                 this.message = 'Profil mis à jour !';
                 this.error = '';
-                this.password = ''; // clear password field
+                this.password = '';
             },
             error: (err: any) => {
                 this.error = err?.error?.message || 'Erreur lors de la mise à jour';

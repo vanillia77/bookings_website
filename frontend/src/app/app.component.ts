@@ -13,7 +13,6 @@ export class AppComponent {
   refreshKey = 0;
 
   constructor(private auth: AuthService, private router: Router) {
-    // Load saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       this.isDarkTheme = true;

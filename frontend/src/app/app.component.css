@@ -4,7 +4,6 @@
     background-color: var(--bg-color);
 }
 
-/* Sidebar */
 .sidebar {
     width: 260px;
     background-color: var(--card-bg);
@@ -100,7 +99,6 @@
     font-size: 20px;
 }
 
-/* Main Content */
 .main-content {
     flex: 1;
     overflow-y: auto;
@@ -121,7 +119,6 @@
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .sidebar {
         width: 0;

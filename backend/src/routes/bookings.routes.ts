@@ -4,7 +4,6 @@ import { authMiddleware } from '../middleware/auth.middleware';
 
 const router = Router();
 
-// Apply authMiddleware to protect routes
 router.use(authMiddleware);
 
 router.get('/', bookingsController.getAllBookings);

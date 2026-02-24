@@ -18,7 +18,6 @@ const routes: Routes = [
   { path: 'bookings/new', component: BookingFormComponent, canActivate: [AuthGuard] },
   { path: 'bookings/edit/:id', component: BookingEditComponent, canActivate: [AuthGuard] },
 
-  // Legacy routes or aliases
   { path: 'form', redirectTo: 'bookings/new' },
   { path: 'list', redirectTo: 'bookings' },
   { path: 'edit/:id', redirectTo: 'bookings/edit/:id' },

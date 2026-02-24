@@ -1,24 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-/* Base styles */
 
-/* Material Datepicker Nude Theme Overrides */
 .mat-calendar-body-selected {
     background-color: #8d6e63 !important;
-    /* Circle color */
     color: white !important;
 }
 
 .mat-calendar-body-today:not(.mat-calendar-body-selected) {
     border-color: #8d6e63 !important;
-    /* Today circle border */
 }
 
 .mat-date-range-input-separator {
     color: #5d4037 !important;
 }
 
-/* Global Material Form Field Reset */
 .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: var(--card-bg);
     border-radius: 12px;
@@ -29,9 +24,7 @@
     display: none !important;
 }
 
-/* Variable Definitions */
 :root {
-    /* Light Theme (Nude) */
     --bg-color: #faf9f6;
     --card-bg: #ffffff;
     --text-primary: #5d4037;
@@ -43,7 +36,6 @@
 }
 
 .dark-theme {
-    /* Creamy Warm Brown Dark Theme */
     --bg-color: #4e342e;
     --card-bg: #5d4037;
     --text-primary: #fbe9e7;
@@ -102,18 +94,11 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* UNIFIED FILTER STYLING (UNIVERSAL LIGHT & DARK) */
-/* This block forces the marron clair pill design on all filters */
-
-/* 1. Target the Select Dropdown */
 .filter-group select {
     background-color: #d7ccc8 !important;
-    /* Marron Clair */
     border-radius: 100px !important;
     border: 1px solid #6d4c41 !important;
-    /* Dark brown border */
     color: #3e2723 !important;
-    /* Dark brown text */
     height: 52px !important;
     padding: 0 24px !important;
     font-weight: 700;
@@ -128,16 +113,12 @@ body {
     cursor: pointer;
 }
 
-/* 2. Target the Material Date Fields (MDC) */
-/* The wrapper/surface is what holds the background */
 .filters-container .mat-mdc-text-field-wrapper,
 .filters-container .mdc-text-field--outlined,
 .filters-container .mdc-text-field {
     background-color: #d7ccc8 !important;
-    /* Marron Clair */
     border-radius: 100px !important;
     border: 1px solid #6d4c41 !important;
-    /* Dark brown border */
     height: 52px !important;
     padding: 0 20px !important;
     display: flex !important;
@@ -145,7 +126,6 @@ body {
     box-sizing: border-box !important;
 }
 
-/* Hide all internal MDC layers that cause shadows, white boxes, or rectangles */
 .filters-container .mdc-notched-outline,
 .filters-container .mdc-notched-outline__leading,
 .filters-container .mdc-notched-outline__notch,
@@ -158,7 +138,6 @@ body {
     opacity: 0 !important;
 }
 
-/* Force text and icon colors */
 .filters-container input.mat-mdc-input-element,
 .filters-container .mdc-text-field__input {
     color: #3e2723 !important;
@@ -175,7 +154,6 @@ body {
     color: #3e2723 !important;
 }
 
-/* Centering and spacing resets */
 .filters-container .mat-mdc-form-field-infix,
 .filters-container .mdc-text-field__infix {
     padding: 0 !important;
@@ -185,13 +163,18 @@ body {
     border: none !important;
 }
 
-/* Clean up extra Material padding and subscripts */
 .filters-container .mat-mdc-form-field-subscript-wrapper,
 .filters-container .mat-mdc-form-field-bottom-align,
 .filters-container .mat-form-field-wrapper {
     display: none !important;
 }
 
+html,
+body {
+    height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

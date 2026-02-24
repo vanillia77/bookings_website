@@ -3,12 +3,10 @@
     <h1>Aperçu du Tableau de Bord</h1>
   </div>
 
-  <!-- Actions / Booking Form -->
   <div class="actions-section">
     <app-booking-form (created)="loadCalendar(); loadStats()"></app-booking-form>
   </div>
 
-  <!-- Filters -->
   <div class="filters-container">
     <div class="filter-group">
       <label>Date de début</label>
@@ -41,7 +39,6 @@
     </button>
   </div>
 
-  <!-- KPI Cards -->
   <div class="kpi-grid">
     <div class="kpi-card total">
       <div class="kpi-icon">
@@ -82,7 +79,6 @@
   </div>
 
   <div class="charts-calendar-grid">
-    <!-- Chart Section -->
     <div class="chart-container">
       <div class="card-header">
         <span class="material-icons">bar_chart</span>
@@ -93,7 +89,6 @@
       </canvas>
     </div>
 
-    <!-- Calendar Section -->
     <div class="calendar-container">
       <div class="card-header">
         <span class="material-icons">event</span>

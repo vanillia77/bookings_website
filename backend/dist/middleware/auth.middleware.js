@@ -16,7 +16,7 @@ function authMiddleware(req, res, next) {
         return res.status(401).json({ message: "Token manquant" });
     try {
         const decoded = jsonwebtoken_1.default.verify(token, JWT_SECRET);
-        req.user = decoded; // {id, email, role}
+        req.user = decoded;
         next();
     }
     catch (err) {

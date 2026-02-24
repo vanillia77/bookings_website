@@ -1,0 +1,234 @@
+/* Container */
+.table-container {
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: 0 8px 30px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  margin-top: 20px;
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Header Section */
+.table-header {
+  background: rgba(141, 110, 99, 0.05);
+  padding: 25px 40px;
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-icon {
+  color: var(--accent-color);
+  margin-right: 12px;
+  font-size: 28px;
+}
+
+.header-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.booking-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Table Area */
+.table-content {
+  padding: 10px 40px 30px 40px;
+}
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.booking-table th {
+  padding: 20px 15px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.booking-table th.actions-column {
+  text-align: right;
+}
+
+.booking-row {
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booking-row:hover {
+  background: rgba(141, 110, 99, 0.04);
+  transform: scale(1.002);
+}
+
+.booking-row td {
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* Cell Specifics */
+.user-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.user-email {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.details-cell {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.persons-cell {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.phone-cell {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.text-primary-cell {
+  color: var(--text-primary);
+}
+
+/* Badge System */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.status-badge:hover {
+  transform: translateY(-1px);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-icon {
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:active {
+  transform: scale(0.9);
+}
+
+.btn-edit {
+  background: rgba(141, 110, 99, 0.1);
+  color: var(--accent-color);
+}
+
+.btn-edit:hover {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 10px rgba(141, 110, 99, 0.3);
+}
+
+.btn-delete {
+  background: rgba(229, 115, 115, 0.1);
+  color: #d32f2f;
+}
+
+.btn-delete:hover {
+  background: #d32f2f;
+  color: white;
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+}
+
+.btn-confirm {
+  background: rgba(129, 199, 132, 0.1);
+  color: #388e3c;
+}
+
+.btn-confirm:hover {
+  background: #388e3c;
+  color: white;
+  box-shadow: 0 4px 10px rgba(56, 142, 60, 0.3);
+}
+
+/* Empty State */
+.empty-state {
+  padding: 60px 0;
+  text-align: center;
+  color: #bbb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: fadeIn 0.8s ease;
+}
+
+.empty-icon {
+  font-size: 56px;
+  opacity: 0.15;
+}
+
+.empty-text {
+  margin: 0;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -38,7 +38,7 @@ function initDb() {
             persons INTEGER,
             FOREIGN KEY(userId) REFERENCES users(id)
         )`);
-        // Migrations: Try to add columns if they don't exist (for existing DBs)
+
         const migrations = [
             "ALTER TABLE bookings ADD COLUMN endDate TEXT",
             "ALTER TABLE bookings ADD COLUMN phone TEXT",
@@ -46,7 +46,7 @@ function initDb() {
         ];
         migrations.forEach(query => {
             db.run(query, (err) => {
-                // Ignore error if column already exists
+
             });
         });
     });

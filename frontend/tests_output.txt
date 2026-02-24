@@ -1,0 +1,139 @@
+
+> frontend@0.0.0 test
+> ng test --watch=false --browsers=ChromeHeadless
+
+- Generating browser application bundles (phase: setup)...
+Ô£ö Browser application bundle generation complete.
+24 02 2026 17:16:49.252:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+24 02 2026 17:16:49.255:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+24 02 2026 17:16:49.262:INFO [launcher]: Starting browser ChromeHeadless
+24 02 2026 17:16:50.773:INFO [Chrome Headless 145.0.0.0 (Windows 10)]: Connected on socket 8H_hyx_J3YZXZQQGAAAB with id 68566782
+Chrome Headless 145.0.0.0 (Windows 10): Executed 0 of 12[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) DashboardComponent should create FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[StatsService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'StatsService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///StatsService/╔Áfac.js:4:40)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 1 of 12[31m (1 FAILED)[39m (0 secs / 0.08 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 2 of 12[31m (1 FAILED)[39m (0 secs / 0.089 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) BookingEditComponent should create FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[ActivatedRoute -> ActivatedRoute]: 
+	  NullInjectorError: No provider for ActivatedRoute!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'ActivatedRoute', 'ActivatedRoute' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at ChainedInjector.get (node_modules/@angular/core/fesm2022/core.mjs:14018:36)
+	    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2022/core.mjs:4608:39)
+	    at getOrCreateInjectable (node_modules/@angular/core/fesm2022/core.mjs:4656:12)
+	    at ╔Á╔ÁdirectiveInject (node_modules/@angular/core/fesm2022/core.mjs:11801:19)
+	    at NodeInjectorFactory.factory (ng:///BookingEditComponent/╔Áfac.js:4:48)
+	    at getNodeInjectable (node_modules/@angular/core/fesm2022/core.mjs:4862:44)
+	    at createRootComponent (node_modules/@angular/core/fesm2022/core.mjs:14273:35)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 3 of 12[31m (2 FAILED)[39m (0 secs / 0.115 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 4 of 12[31m (2 FAILED)[39m (0 secs / 0.117 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 5 of 12[31m (2 FAILED)[39m (0 secs / 0.121 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 6 of 12[31m (2 FAILED)[39m (0 secs / 0.125 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) AppComponent should render title FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[AuthService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///AuthService/╔Áfac.js:4:39)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 7 of 12[31m (3 FAILED)[39m (0 secs / 0.143 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) AppComponent should have as title 'frontend' FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[AuthService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///AuthService/╔Áfac.js:4:39)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 8 of 12[31m (4 FAILED)[39m (0 secs / 0.147 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) AppComponent should create the app FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[AuthService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///AuthService/╔Áfac.js:4:39)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 9 of 12[31m (5 FAILED)[39m (0 secs / 0.151 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) AuthService should be created FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[AuthService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///AuthService/╔Áfac.js:4:39)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 10 of 12[31m (6 FAILED)[39m (0 secs / 0.154 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) RegisterComponent should create FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[AuthService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///AuthService/╔Áfac.js:4:39)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 11 of 12[31m (7 FAILED)[39m (0 secs / 0.164 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) LoginComponent should create FAILED[39m
+	NullInjectorError: R3InjectorError(DynamicTestModule)[AuthService -> HttpClient -> HttpClient]: 
+	  NullInjectorError: No provider for HttpClient!
+	error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'AuthService', 'HttpClient', 'HttpClient' ] })
+	    at NullInjector.get (node_modules/@angular/core/fesm2022/core.mjs:8890:27)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9334:33)
+	    at injectInjectorOnly (node_modules/@angular/core/fesm2022/core.mjs:842:40)
+	    at ╔Á╔Áinject (node_modules/@angular/core/fesm2022/core.mjs:848:60)
+	    at Object.factory (ng:///AuthService/╔Áfac.js:4:39)
+	    at callback (node_modules/@angular/core/fesm2022/core.mjs:9454:43)
+	    at runInInjectorProfilerContext (node_modules/@angular/core/fesm2022/core.mjs:798:9)
+	    at R3Injector.hydrate (node_modules/@angular/core/fesm2022/core.mjs:9453:17)
+	    at R3Injector.get (node_modules/@angular/core/fesm2022/core.mjs:9323:33)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 12 of 12[31m (8 FAILED)[39m (0 secs / 0.17 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 12 of 12[31m (8 FAILED)[39m (0.208 secs / 0.17 secs)
+[31mTOTAL: 8 FAILED, 4 SUCCESS[39m
+Ô£ö Browser application bundle generation complete.
+Ô£ö Browser application bundle generation complete.

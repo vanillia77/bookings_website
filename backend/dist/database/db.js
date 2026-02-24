@@ -17,7 +17,6 @@ const db = new sqlite3_1.default.Database(dbPath, (err) => {
 });
 function initDb() {
     db.serialize(() => {
-        // Users Table
         db.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             fullName TEXT,
@@ -26,7 +25,6 @@ function initDb() {
             role TEXT DEFAULT 'User',
             createdAt TEXT DEFAULT (datetime('now'))
         )`);
-        // Bookings Table
         db.run(`CREATE TABLE IF NOT EXISTS bookings (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             userId INTEGER,
@@ -36,17 +34,31 @@ function initDb() {
             details TEXT,
             phone TEXT,
             persons INTEGER,
+            time TEXT,
             FOREIGN KEY(userId) REFERENCES users(id)
         )`);
-
-        const migrations = [
-            "ALTER TABLE bookings ADD COLUMN endDate TEXT",
-            "ALTER TABLE bookings ADD COLUMN phone TEXT",
-            "ALTER TABLE bookings ADD COLUMN persons INTEGER"
+        // Check columns and add if missing
+        const columnsToAdd = [
+            { name: 'endDate', type: 'TEXT' },
+            { name: 'phone', type: 'TEXT' },
+            { name: 'persons', type: 'INTEGER' },
+            { name: 'time', type: 'TEXT' }
         ];
-        migrations.forEach(query => {
-            db.run(query, (err) => {
-
+        db.all("PRAGMA table_info(bookings)", (err, rows) => {
+            if (err)
+                return;
+            const existingColumns = rows.map((r) => r.name);
+            columnsToAdd.forEach(col => {
+                if (!existingColumns.includes(col.name)) {
+                    db.run(`ALTER TABLE bookings ADD COLUMN ${col.name} ${col.type}`, (err) => {
+                        if (err) {
+                            // Suppress already exists error if any, but log others
+                            if (!err.message.includes('duplicate column name')) {
+                                console.error(`Error adding column ${col.name}:`, err.message);
+                            }
+                        }
+                    });
+                }
             });
         });
     });

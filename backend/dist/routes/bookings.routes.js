@@ -37,7 +37,6 @@ const express_1 = require("express");
 const bookingsController = __importStar(require("../controllers/bookings.controller"));
 const auth_middleware_1 = require("../middleware/auth.middleware");
 const router = (0, express_1.Router)();
-// Apply authMiddleware to protect routes
 router.use(auth_middleware_1.authMiddleware);
 router.get('/', bookingsController.getAllBookings);
 router.post('/', bookingsController.createBooking);

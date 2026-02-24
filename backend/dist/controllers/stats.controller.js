@@ -9,13 +9,11 @@ const getGeneralStats = (req, res) => {
     const { startDate, endDate, status } = req.query;
     let whereClauses = [];
     let params = [];
-
     if (startDate) {
         whereClauses.push(`(date >= ? OR endDate >= ?)`);
         params.push(startDate, startDate);
     }
     if (endDate) {
-
         const endOfDay = `${endDate}T23:59:59`;
         whereClauses.push(`date <= ?`);
         params.push(endOfDay);
@@ -30,16 +28,21 @@ const getGeneralStats = (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        const total = row ? row.total : 0;
-
-        const sqlByStatus = `SELECT status, COUNT(*) as count FROM bookings ${whereSql} GROUP BY status`;
-        db_1.default.all(sqlByStatus, params, (err, rows) => {
-            if (err) {
+        const filteredTotal = row ? row.total : 0;
+        db_1.default.get('SELECT COUNT(*) as absoluteTotal FROM bookings', [], (err, absRow) => {
+            if (err)
                 return res.status(500).json({ error: err.message });
-            }
-            res.json({
-                totalReservations: total,
-                reservationsByStatus: rows
+            const absoluteTotal = absRow ? absRow.absoluteTotal : 0;
+            const sqlByStatus = `SELECT status, COUNT(*) as count FROM bookings ${whereSql} GROUP BY status`;
+            db_1.default.all(sqlByStatus, params, (err, rows) => {
+                if (err) {
+                    return res.status(500).json({ error: err.message });
+                }
+                res.json({
+                    totalReservations: absoluteTotal,
+                    filteredTotal: filteredTotal,
+                    reservationsByStatus: rows
+                });
             });
         });
     });
@@ -72,7 +75,7 @@ const getCalendarEvents = (req, res) => {
             id: booking.id,
             title: `${booking.details} (${booking.status})`,
             start: booking.date,
-            end: booking.endDate || booking.date, // Include end date for fullcalendar
+            end: booking.endDate || booking.date,
             backgroundColor: getColorForStatus(booking.status)
         }));
         res.json(events);
@@ -81,9 +84,9 @@ const getCalendarEvents = (req, res) => {
 exports.getCalendarEvents = getCalendarEvents;
 const getColorForStatus = (status) => {
     switch (status) {
-        case 'confirmed': return '#28a745'; // Green
-        case 'pending': return '#ffc107'; // Yellow
-        case 'cancelled': return '#dc3545'; // Red
-        default: return '#007bff'; // Blue
+        case 'confirmed': return '#28a745';
+        case 'pending': return '#ffc107';
+        case 'cancelled': return '#dc3545';
+        default: return '#007bff';
     }
 };

@@ -1,0 +1,94 @@
+
+> frontend@0.0.0 test
+> ng test --watch=false --browsers=ChromeHeadless
+
+- Generating browser application bundles (phase: setup)...
+Ô£ö Browser application bundle generation complete.
+24 02 2026 17:18:36.404:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+24 02 2026 17:18:36.409:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+24 02 2026 17:18:36.420:INFO [launcher]: Starting browser ChromeHeadless
+24 02 2026 17:18:39.439:INFO [Chrome Headless 145.0.0.0 (Windows 10)]: Connected on socket I5HAyA84EXXBw6x3AAAB with id 19848432
+Chrome Headless 145.0.0.0 (Windows 10): Executed 0 of 12[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 1 of 12[32m SUCCESS[39m (0 secs / 0.02 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 2 of 12[32m SUCCESS[39m (0 secs / 0.024 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 3 of 12[32m SUCCESS[39m (0 secs / 0.026 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 4 of 12[32m SUCCESS[39m (0 secs / 0.026 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) BookingEditComponent should create FAILED[39m
+	Error: NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input' (used in the 'BookingEditComponent' component template).
+	1. If 'input' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+	2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+	error properties: Object({ code: 303 })
+	    at reportUnknownPropertyError (node_modules/@angular/core/fesm2022/core.mjs:6304:15)
+	    at handleUnknownPropertyError (node_modules/@angular/core/fesm2022/core.mjs:6300:5)
+	    at elementPropertyInternal (node_modules/@angular/core/fesm2022/core.mjs:12426:17)
+	    at ╔Á╔Áproperty (node_modules/@angular/core/fesm2022/core.mjs:16255:9)
+	    at templateFn (ng:///BookingEditComponent.js:93:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12003:13)
+	    at refreshView (node_modules/@angular/core/fesm2022/core.mjs:13498:13)
+	    at detectChangesInView (node_modules/@angular/core/fesm2022/core.mjs:13663:9)
+	    at detectChangesInComponent (node_modules/@angular/core/fesm2022/core.mjs:13638:5)
+	    at detectChangesInChildComponents (node_modules/@angular/core/fesm2022/core.mjs:13676:9)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 5 of 12[31m (1 FAILED)[39m (0 secs / 0.088 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 6 of 12[31m (1 FAILED)[39m (0 secs / 0.09 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) AppComponent should render title FAILED[39m
+	Expected undefined to contain 'frontend app is running!'.
+	    at <Jasmine>
+	    at UserContext.apply (src/app/app.component.spec.ts:28:66)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:368:26)
+	    at ProxyZoneSpec.onInvoke (node_modules/zone.js/fesm2015/zone-testing.js:273:39)
+	    at _ZoneDelegate.invoke (node_modules/zone.js/fesm2015/zone.js:367:52)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 7 of 12[31m (2 FAILED)[39m (0 secs / 0.107 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 8 of 12[31m (2 FAILED)[39m (0 secs / 0.112 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 9 of 12[31m (2 FAILED)[39m (0 secs / 0.116 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) DashboardComponent should create FAILED[39m
+	Error: NG0304: 'app-booking-form' is not a known element (used in the 'DashboardComponent' component template):
+	1. If 'app-booking-form' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+	2. If 'app-booking-form' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+	error properties: Object({ code: 304 })
+	    at validateElementIsKnown (node_modules/@angular/core/fesm2022/core.mjs:6212:23)
+	    at ╔Á╔ÁelementStart (node_modules/@angular/core/fesm2022/core.mjs:16319:9)
+	    at templateFn (ng:///DashboardComponent.js:19:40)
+	    at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12003:13)
+	    at renderView (node_modules/@angular/core/fesm2022/core.mjs:13201:13)
+	    at renderComponent (node_modules/@angular/core/fesm2022/core.mjs:13148:5)
+	    at renderChildComponents (node_modules/@angular/core/fesm2022/core.mjs:13246:9)
+	    at renderView (node_modules/@angular/core/fesm2022/core.mjs:13226:13)
+	    at ComponentFactory.create (node_modules/@angular/core/fesm2022/core.mjs:14138:13)
+	    at initComponent (node_modules/@angular/core/fesm2022/testing.mjs:27492:51)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 10 of 12[31m (3 FAILED)[39m (0 secs / 0.135 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) RegisterComponent should create FAILED[39m
+	Error: NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input' (used in the 'RegisterComponent' component template).
+	1. If 'input' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+	2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+	error properties: Object({ code: 303 })
+	    at reportUnknownPropertyError (node_modules/@angular/core/fesm2022/core.mjs:6304:15)
+	    at handleUnknownPropertyError (node_modules/@angular/core/fesm2022/core.mjs:6300:5)
+	    at elementPropertyInternal (node_modules/@angular/core/fesm2022/core.mjs:12426:17)
+	    at ╔Á╔Áproperty (node_modules/@angular/core/fesm2022/core.mjs:16255:9)
+	    at templateFn (ng:///RegisterComponent.js:58:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12003:13)
+	    at refreshView (node_modules/@angular/core/fesm2022/core.mjs:13498:13)
+	    at detectChangesInView (node_modules/@angular/core/fesm2022/core.mjs:13663:9)
+	    at detectChangesInComponent (node_modules/@angular/core/fesm2022/core.mjs:13638:5)
+	    at detectChangesInChildComponents (node_modules/@angular/core/fesm2022/core.mjs:13676:9)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 11 of 12[31m (4 FAILED)[39m (0 secs / 0.147 secs)
+[1A[2K[31mChrome Headless 145.0.0.0 (Windows 10) LoginComponent should create FAILED[39m
+	Error: NG0303: Can't bind to 'ngModel' since it isn't a known property of 'input' (used in the 'LoginComponent' component template).
+	1. If 'input' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+	2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+	error properties: Object({ code: 303 })
+	    at reportUnknownPropertyError (node_modules/@angular/core/fesm2022/core.mjs:6304:15)
+	    at handleUnknownPropertyError (node_modules/@angular/core/fesm2022/core.mjs:6300:5)
+	    at elementPropertyInternal (node_modules/@angular/core/fesm2022/core.mjs:12426:17)
+	    at ╔Á╔Áproperty (node_modules/@angular/core/fesm2022/core.mjs:16255:9)
+	    at templateFn (ng:///LoginComponent.js:52:9)
+	    at executeTemplate (node_modules/@angular/core/fesm2022/core.mjs:12003:13)
+	    at refreshView (node_modules/@angular/core/fesm2022/core.mjs:13498:13)
+	    at detectChangesInView (node_modules/@angular/core/fesm2022/core.mjs:13663:9)
+	    at detectChangesInComponent (node_modules/@angular/core/fesm2022/core.mjs:13638:5)
+	    at detectChangesInChildComponents (node_modules/@angular/core/fesm2022/core.mjs:13676:9)
+Chrome Headless 145.0.0.0 (Windows 10): Executed 12 of 12[31m (5 FAILED)[39m (0 secs / 0.157 secs)
+[1A[2KChrome Headless 145.0.0.0 (Windows 10): Executed 12 of 12[31m (5 FAILED)[39m (0.183 secs / 0.157 secs)
+[31mTOTAL: 5 FAILED, 7 SUCCESS[39m
+Ô£ö Browser application bundle generation complete.
+Ô£ö Browser application bundle generation complete.

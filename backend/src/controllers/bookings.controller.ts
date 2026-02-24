@@ -10,14 +10,14 @@ export const getAllBookings = (req: Request, res: Response) => {
     });
 };
 
-export const createBooking = (req: Request, res: Response) => {
+export const createBooking = (req: Request & { user?: any }, res: Response) => {
     const { userId, date, endDate, details, status, phone, persons, time } = req.body;
 
     if (!date) {
         return res.status(400).json({ message: "Date requise" });
     }
 
-    const uId = (req as any).user ? (req as any).user.id : (userId || 1);
+    const uId = req.user ? req.user.id : (userId || 1);
     const initialStatus = status || 'pending';
 
     db.run(
@@ -25,6 +25,7 @@ export const createBooking = (req: Request, res: Response) => {
         [uId, date, endDate, details || 'Reservation', initialStatus, phone, persons, time],
         function (err) {
             if (err) {
+                console.error(`Error creating booking: ${err.message}`);
                 return res.status(500).json({ message: "Erreur creation", error: err.message });
             }
             res.status(201).json({ id: this.lastID, message: "Reservation créée" });

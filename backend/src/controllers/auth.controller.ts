@@ -3,9 +3,20 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import db from '../database/db';
 
-const JWT_SECRET = "DWFS_SECRET_KEY_CHANGE_ME";
+import dotenv from 'dotenv';
+dotenv.config();
 
-function generateToken(user: any) {
+const JWT_SECRET = process.env.JWT_SECRET || "DWFS_SECRET_KEY_DEVELOPMENT_ONLY";
+
+
+interface User {
+    id: number;
+    email: string;
+    role: string;
+    fullName: string;
+}
+
+function generateToken(user: Partial<User>) {
     return jwt.sign(
         { id: user.id, email: user.email, role: user.role },
         JWT_SECRET,
@@ -41,7 +52,7 @@ export const register = async (req: Request, res: Response) => {
                 }
 
                 console.log(`[AUTH] User registered successfully: ${email} (ID: ${this.lastID})`);
-                const user = { id: this.lastID, fullName, email, role: userRole };
+                const user: User = { id: this.lastID, fullName, email, role: userRole };
                 const token = generateToken(user);
 
                 return res.status(201).json({
@@ -79,7 +90,7 @@ export const login = (req: Request, res: Response) => {
             return res.status(401).json({ message: "Email ou mot de passe incorrect" });
         }
 
-        const user = { id: row.id, fullName: row.fullName, email: row.email, role: row.role };
+        const user: User = { id: row.id, fullName: row.fullName, email: row.email, role: row.role };
         const token = generateToken(user);
         console.log(`Login successful: ${email}`);
 
@@ -87,7 +98,7 @@ export const login = (req: Request, res: Response) => {
     });
 };
 
-export const getMe = (req: any, res: Response) => {
+export const getMe = (req: Request & { user?: any }, res: Response) => {
     res.json({ message: "OK", user: req.user });
 };
 
@@ -100,8 +111,11 @@ export const getUsers = (req: Request, res: Response) => {
     });
 };
 
-export const updateProfile = async (req: any, res: Response) => {
-    const userId = req.user.id;
+export const updateProfile = async (req: Request & { user?: any }, res: Response) => {
+    const userId = req.user?.id;
+    if (!userId) {
+        return res.status(401).json({ message: "Non autorisé" });
+    }
     const { fullName, password } = req.body;
 
     try {
